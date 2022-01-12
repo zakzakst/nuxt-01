@@ -5,6 +5,10 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  router: {
+    base: '/nuxt/01/'
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-01',
@@ -18,6 +22,9 @@ export default {
       { name: 'format-detection', content: 'telephone=no' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    base: {
+      href: 'router.base'
+    },
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
