@@ -1,7 +1,8 @@
 <template>
   <div>
     Step2
-    <router-link to="/step1">step1</router-link>
+    <router-link to="/step1">前</router-link>
+    <router-link to="/step3">次</router-link>
   </div>
 </template>
 
