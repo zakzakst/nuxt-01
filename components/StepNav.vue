@@ -1,6 +1,12 @@
 <template>
   <ul>
-    <li v-for="step in steps" :key="step.id" :class="{'is-current': isCurrentStep(step.id)}">{{ step.label }}</li>
+    <li
+      v-for="step in steps"
+      :key="step.id"
+      :class="{ 'is-current': isCurrentStep(step.id) }"
+    >
+      {{ step.label }}
+    </li>
   </ul>
 </template>
 
@@ -24,21 +30,21 @@ export default {
           label: 'STEP3',
         },
       ],
-    };
+    }
   },
 
   computed: {
     isCurrentStep() {
       return (id) => {
-        return this.$route.name === id;
-      };
+        return this.$route.name === id
+      }
     },
   },
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .is-current {
-  color: #f00;
+  color: $c_primary;
 }
 </style>
