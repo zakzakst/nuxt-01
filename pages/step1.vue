@@ -1,10 +1,10 @@
 <template>
-  <div>IndexPage</div>
+  <div>Step1</div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'Step1',
   layout: 'step',
 }
 </script>
