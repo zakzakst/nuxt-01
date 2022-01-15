@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="l-step__container">
     <StepNav />
-    <nuxt />
+    <transition name="step">
+      <nuxt />
+    </transition>
   </div>
 </template>
 
@@ -14,3 +16,20 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.l-step {
+  &__container {
+    overflow: hidden;
+  }
+}
+.step-enter-active,
+.step-leave-active {
+  transition: all 1s;
+}
+.step-enter,
+.step-leave-active {
+  opacity: 0;
+  transform: translateX(50px);
+}
+</style>
