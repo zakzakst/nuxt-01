@@ -1,9 +1,12 @@
+import Sass from 'sass'
+import Fiber from 'fibers'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
   router: {
-    base: '/nuxt/01/'
+    base: '/nuxt/01/',
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -45,6 +48,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -54,5 +58,18 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    loaders: {
+      scss: {
+        implementation: Sass,
+        sassOptions: {
+          fiber: Fiber,
+        },
+      },
+    },
+  },
+
+  styleResources: {
+    scss: ['@/assets/scss/variable.scss'],
+  },
 }

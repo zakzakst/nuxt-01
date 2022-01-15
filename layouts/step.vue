@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import StepNav from '@/components/StepNav.vue';
+import StepNav from '@/components/StepNav.vue'
 
 export default {
   components: {
