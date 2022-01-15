@@ -1,13 +1,13 @@
 <template>
   <div>
-    Step1
-    <router-link to="/step2">次</router-link>
+    Step3
+    <router-link to="/step2">前</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Step1',
+  name: 'Step3',
   layout: 'step',
 }
 </script>
