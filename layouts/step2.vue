@@ -12,6 +12,8 @@ export default {
   components: {
     StepNav,
   },
+
+  middleware: 'step',
 }
 </script>
 
