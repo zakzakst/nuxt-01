@@ -70,6 +70,8 @@ export default {
   },
 
   styleResources: {
-    scss: ['@/assets/scss/variable.scss'],
+    scss: [
+      '@/assets/scss/_style.scss',
+    ],
   },
 }
