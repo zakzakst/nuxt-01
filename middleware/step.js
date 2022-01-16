@@ -1,4 +1,5 @@
-export default ({ from, route, redirect, }) => {
+export default ({ from, route, redirect }) => {
+  // URLに直アクセスした場合、step1にリダイレクト
   if (
     route.name === 'step1' ||
     (from?.name === 'step1' && route.name === 'step2') ||

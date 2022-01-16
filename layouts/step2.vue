@@ -9,6 +9,8 @@
 import StepNav from '@/components/StepNav.vue'
 
 export default {
+  name: 'LayoutStep2',
+
   components: {
     StepNav,
   },
