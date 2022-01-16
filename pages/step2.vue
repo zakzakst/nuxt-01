@@ -7,9 +7,10 @@
 </template>
 
 <script>
+import StepMixin from '@/mixins/step';
+
 export default {
   name: 'Step2',
-  layout: 'step',
-  transition: 'step',
+  mixins: [ StepMixin ],
 }
 </script>

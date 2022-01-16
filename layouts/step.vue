@@ -25,33 +25,33 @@ export default {
       animName: null,
       fromPage: null,
       toPage: null,
-    };
+    }
   },
 
   methods: {
     updateAnimName() {
-      this.fromPage = this.toPage;
-      this.toPage = this.$route.name;
+      this.fromPage = this.toPage
+      this.toPage = this.$route.name
       if (
         (this.fromPage === 'step2' && this.toPage === 'step1') ||
         (this.fromPage === 'step3' && this.toPage === 'step2')
       ) {
-        this.animName = 'StepSlideRight';
+        this.animName = 'StepSlideRight'
       } else {
-        this.animName = 'StepSlideLeft';
+        this.animName = 'StepSlideLeft'
       }
     },
     beforeEnter(el) {
-      this.updateAnimName();
-      el.style.animation = `${ this.animName } ${ this.animSpeed }ms`;
+      this.updateAnimName()
+      el.style.animation = `${this.animName} ${this.animSpeed}ms`
     },
     enter(el, done) {
       setTimeout(() => {
-        done();
-      }, this.animSpeed);
+        done()
+      }, this.animSpeed)
     },
     afterEnter(el) {
-      el.style = null;
+      el.style = null
     },
   },
 }

@@ -1,0 +1,34 @@
+$slide_duration: .5s;
+$slide_offset: 30px;
+
+// 右スライド
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: all $slide_duration;
+}
+.slide-right-enter,
+.slide-right-leave-active {
+  opacity: 0;
+}
+.slide-right-enter {
+  transform: translateX(-$slide_offset);
+}
+.slide-right-leave-active {
+  transform: translateX($slide_offset);
+}
+
+// 左スライド
+.slide-left-enter-active,
+.slide-left-leave-active {
+  transition: all $slide_duration;
+}
+.slide-left-enter,
+.slide-left-leave-active {
+  opacity: 0;
+}
+.slide-left-enter {
+  transform: translateX($slide_offset);
+}
+.slide-left-leave-active {
+  transform: translateX(-$slide_offset);
+}
