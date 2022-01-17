@@ -27,7 +27,7 @@ export default {
   middleware: 'step',
 
   head() {
-    const scrollBarWidth = window.innerWidth - document.body.clientWidth
+    const scrollBarWidth = process.client ? window.innerWidth - document.body.clientWidth : 0
     return {
       htmlAttrs: {
         style: this.$store.state.loader.loading ? 'overflow: hidden' : ''
