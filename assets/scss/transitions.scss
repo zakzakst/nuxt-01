@@ -1,5 +1,6 @@
-$slide_duration: 0.5s;
-$slide_offset: 30px;
+$slide_duration: 0.7s;
+$slide_offset: 50px;
+$fade_duration: 0.5s;
 
 // 右スライド
 .slide-right-enter-active,
@@ -31,4 +32,14 @@ $slide_offset: 30px;
 }
 .slide-left-leave-active {
   transform: translateX(-$slide_offset);
+}
+
+// フェード
+.fade-enter-active,
+.fade-leave-active {
+  transition: all $fade_duration;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }

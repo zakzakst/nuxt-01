@@ -1,5 +1,5 @@
 export default {
-  layout: 'step2',
+  layout: 'step',
 
   transition(to, from) {
     if (
@@ -22,12 +22,16 @@ export default {
     if (to.name === 'step1' || to.name === 'step2' || to.name === 'step3') {
       next()
     } else {
-      const answer = window.confirm(
-        '入力中のデータがクリアされます。よろしいでしょうか。'
-      )
+      let answer = true;
+      // 送信完了後の遷移以外の場合、確認アラートを表示してから遷移
+      if (from.name !== 'step3' || to.name !== 'index') {
+        answer = window.confirm(
+          '入力中のデータがクリアされます。よろしいでしょうか。'
+        )
+      }
       if (answer) {
         // step以外のページに移動した場合、stateをクリアしてページ遷移
-        this.$store.dispatch('step/clearStep1')
+        this.$store.dispatch('step/clearAll')
         next()
       } else {
         next(false)

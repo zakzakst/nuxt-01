@@ -7,7 +7,6 @@
     >
       {{ step.label }}
     </li>
-    <li><router-link to="/">Index</router-link></li>
   </ul>
 </template>
 

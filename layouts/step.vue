@@ -1,58 +1,41 @@
 <template>
-  <div class="l-step__container">
-    <StepNav />
-    <transition
-      @before-enter="beforeEnter"
-      @enter="enter"
-      @after-enter="afterEnter"
-    >
-      <nuxt />
-    </transition>
+  <div>
+    <div class="l-step__container">
+      <StepNav />
+      <div class="container is-max-desktop">
+        <section class="section">
+          <nuxt />
+        </section>
+      </div>
+    </div>
+    <Loader />
   </div>
 </template>
 
 <script>
 import StepNav from '@/components/StepNav.vue'
+import Loader from '@/components/Loader.vue'
 
 export default {
+  name: 'LayoutStep2',
+
   components: {
     StepNav,
+    Loader,
   },
 
-  data() {
+  middleware: 'step',
+
+  head() {
+    const scrollBarWidth = process.client ? window.innerWidth - document.body.clientWidth : 0
     return {
-      animSpeed: 1000,
-      animName: null,
-      fromPage: null,
-      toPage: null,
+      htmlAttrs: {
+        style: this.$store.state.loader.loading ? 'overflow: hidden' : ''
+      },
+      bodyAttrs: {
+        style: this.$store.state.loader.loading ? `padding-right: ${ scrollBarWidth }px` : ''
+      },
     }
-  },
-
-  methods: {
-    updateAnimName() {
-      this.fromPage = this.toPage
-      this.toPage = this.$route.name
-      if (
-        (this.fromPage === 'step2' && this.toPage === 'step1') ||
-        (this.fromPage === 'step3' && this.toPage === 'step2')
-      ) {
-        this.animName = 'StepSlideRight'
-      } else {
-        this.animName = 'StepSlideLeft'
-      }
-    },
-    beforeEnter(el) {
-      this.updateAnimName()
-      el.style.animation = `${this.animName} ${this.animSpeed}ms`
-    },
-    enter(el, done) {
-      setTimeout(() => {
-        done()
-      }, this.animSpeed)
-    },
-    afterEnter(el) {
-      el.style = null
-    },
   },
 }
 </script>
@@ -65,27 +48,9 @@ export default {
 }
 </style>
 
-<style lang="scss">
-$step_slide_offset: 50px;
-
-@keyframes StepSlideLeft {
-  0% {
-    opacity: 0;
-    transform: translateX($step_slide_offset);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes StepSlideRight {
-  0% {
-    opacity: 0;
-    transform: translateX(-$step_slide_offset);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+<style>
+/* TODO: _style.scssが共通CSSとして書き出されていないことへの暫定対応 */
+html.is-loading {
+  overflow: hidden;
 }
 </style>
