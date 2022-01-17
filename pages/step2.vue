@@ -57,6 +57,7 @@ import StepMixin from '@/mixins/step'
 import Radios from '@/components/Radios.vue'
 import Checkboxes from '@/components/Checkboxes.vue'
 import Textarea from '@/components/Textarea.vue'
+import { startItems, jobTypes } from '@/constants/formItems'
 
 export default {
   name: 'Step2',
@@ -81,38 +82,8 @@ export default {
         jobTypes: '',
         remarks: '',
       },
-      startItems: [
-        {
-          value: 'soon',
-          label: 'すぐに開始したい',
-        },
-        {
-          value: 'month',
-          label: '1ヶ月以内',
-        },
-        {
-          value: 'threeMonths',
-          label: '3ヶ月以内',
-        },
-        {
-          value: 'more',
-          label: '3ヶ月後以降',
-        },
-      ],
-      jobTypes: [
-        {
-          value: 'sales',
-          label: '営業',
-        },
-        {
-          value: 'clerk',
-          label: '事務',
-        },
-        {
-          value: 'engineer',
-          label: 'エンジニア',
-        },
-      ],
+      startItems,
+      jobTypes,
       remarksMaxNum: 20,
     };
   },

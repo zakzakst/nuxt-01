@@ -79,7 +79,7 @@
 import StepMixin from '@/mixins/step'
 import InputText from '@/components/InputText.vue'
 import Select from '@/components/Select.vue'
-import { birthYears, birthMonths, birthDays } from '@/constants/birth'
+import { birthYears, birthMonths, birthDays } from '@/constants/formItems'
 
 export default {
   name: 'Step1',

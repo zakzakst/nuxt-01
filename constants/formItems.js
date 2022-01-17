@@ -42,3 +42,37 @@ export const birthDays = [
     label: '3',
   },
 ]
+
+export const startItems = [
+  {
+    value: 'soon',
+    label: 'すぐに開始したい',
+  },
+  {
+    value: 'month',
+    label: '1ヶ月以内',
+  },
+  {
+    value: 'threeMonths',
+    label: '3ヶ月以内',
+  },
+  {
+    value: 'more',
+    label: '3ヶ月後以降',
+  },
+];
+
+export const jobTypes = [
+  {
+    value: 'sales',
+    label: '営業',
+  },
+  {
+    value: 'clerk',
+    label: '事務',
+  },
+  {
+    value: 'engineer',
+    label: 'エンジニア',
+  },
+];
