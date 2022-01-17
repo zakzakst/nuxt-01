@@ -36,7 +36,7 @@ export default {
       },
       bodyAttrs: {
         style: this.$store.state.loader.loading
-          ? `padding-right: ${ scrollBarWidth }px`
+          ? `padding-right: ${scrollBarWidth}px`
           : '',
       },
     }

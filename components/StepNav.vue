@@ -9,7 +9,7 @@
             class="step-nav__item is-size-7"
             :class="{ 'is-current': isCurrentStep(step.id) }"
           >
-            {{ step.subLabel }}<br>{{ step.label }}
+            {{ step.subLabel }}<br />{{ step.label }}
           </li>
         </ul>
       </div>
@@ -50,8 +50,12 @@ export default {
       }
     },
     fixedStyle() {
-      const scrollBarWidth = process.client ? window.innerWidth - document.body.clientWidth : 0;
-      return this.$store.state.loader.loading ? `padding-right: ${ scrollBarWidth }px` : '';
+      const scrollBarWidth = process.client
+        ? window.innerWidth - document.body.clientWidth
+        : 0
+      return this.$store.state.loader.loading
+        ? `padding-right: ${scrollBarWidth}px`
+        : ''
     },
   },
 }
