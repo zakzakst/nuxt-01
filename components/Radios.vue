@@ -2,12 +2,14 @@
   <div class="field">
     <label v-if="label" class="label">{{ label }}</label>
     <div class="control">
-      <label
-        v-for="(item, index) in items"
-        :key="index"
-        class="radio"
-      >
-        <input ref="radioEl" type="radio" :name="name" :value="item.value" @change="changeCheckedItem($event)">
+      <label v-for="(item, index) in items" :key="index" class="radio">
+        <input
+          ref="radioEl"
+          type="radio"
+          :name="name"
+          :value="item.value"
+          @change="changeCheckedItem($event)"
+        />
         {{ item.label }}
       </label>
     </div>
@@ -44,23 +46,23 @@ export default {
 
   watch: {
     value() {
-      this.updateCheckedItem();
+      this.updateCheckedItem()
     },
   },
 
   mounted() {
-    this.updateCheckedItem();
+    this.updateCheckedItem()
   },
 
   methods: {
     updateCheckedItem() {
       this.$refs.radioEl.forEach((el) => {
         if (el.value === this.value) {
-          el.checked = true;
+          el.checked = true
         } else {
-          el.checked = false;
+          el.checked = false
         }
-      });
+      })
     },
     changeCheckedItem(event) {
       this.$emit('change', event.target.value)

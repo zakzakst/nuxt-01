@@ -37,7 +37,7 @@ export const mutations = {
   clearStep2(state) {
     for (const [key] of Object.entries(state.step2)) {
       if (key === 'jobTypes') {
-        state.step2[key] = [];
+        state.step2[key] = []
       } else {
         state.step2[key] = ''
       }
@@ -72,9 +72,9 @@ export const actions = {
   submit({ getters }) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(getters.all);
-      }, 1000);
-    });
+        resolve(getters.all)
+      }, 1000)
+    })
   },
 }
 
@@ -90,5 +90,5 @@ export const getters = {
       ...JSON.parse(JSON.stringify(state.step1)),
       ...JSON.parse(JSON.stringify(state.step2)),
     }
-  }
+  },
 }

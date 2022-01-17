@@ -27,13 +27,17 @@ export default {
   middleware: 'step',
 
   head() {
-    const scrollBarWidth = process.client ? window.innerWidth - document.body.clientWidth : 0
+    const scrollBarWidth = process.client
+      ? window.innerWidth - document.body.clientWidth
+      : 0
     return {
       htmlAttrs: {
-        style: this.$store.state.loader.loading ? 'overflow: hidden' : ''
+        style: this.$store.state.loader.loading ? 'overflow: hidden' : '',
       },
       bodyAttrs: {
-        style: this.$store.state.loader.loading ? `padding-right: ${ scrollBarWidth }px` : ''
+        style: this.$store.state.loader.loading
+          ? `padding-right: ${ scrollBarWidth }px`
+          : '',
       },
     }
   },
@@ -43,6 +47,7 @@ export default {
 <style lang="scss" scoped>
 .l-step {
   &__container {
+    padding-top: 60px;
     overflow: hidden;
   }
 }
