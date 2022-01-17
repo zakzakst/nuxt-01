@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import StepMixin from '@/mixins/step';
+import StepMixin from '@/mixins/step'
 
 export default {
   name: 'Step3',
-  mixins: [ StepMixin ],
+  mixins: [StepMixin],
 }
 </script>
