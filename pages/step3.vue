@@ -59,7 +59,7 @@ export default {
         },
         {
           label: '希望開始時期',
-          value: checkedStartItem.label,
+          value: checkedStartItem?.label,
         },
         {
           label: '希望職種',
@@ -77,10 +77,21 @@ export default {
     /**
      * 送信
      */
-    submit() {
-      // 送信処理
-      // 処理完了後storeのデータをクリア
-      // 送信完了ページへ移動
+    async submit() {
+      this.$store.dispatch('loader/setLoading', true)
+      try {
+        // 送信処理
+        const response = await this.$store.dispatch('step/submit')
+        alert('【送信内容】\n' + JSON.stringify(response))
+        this.$store.dispatch('loader/setLoading', false)
+        // 処理完了後storeのデータをクリア
+        this.$store.dispatch('step/clearAll')
+        // 送信完了ページへ移動
+        this.$router.push('/')
+      } catch (error) {
+        this.$store.dispatch('loader/setLoading', false)
+        // エラー時の処理
+      }
     },
 
     /**

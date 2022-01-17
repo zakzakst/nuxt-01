@@ -61,6 +61,21 @@ export const actions = {
   clearStep2({ commit }) {
     commit('clearStep2')
   },
+
+  // step関連のstoreを全てクリア
+  clearAll({ commit }) {
+    commit('clearStep1')
+    commit('clearStep2')
+  },
+
+  // 送信
+  submit({ getters }) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(getters.all);
+      }, 1000);
+    });
+  },
 }
 
 export const getters = {
