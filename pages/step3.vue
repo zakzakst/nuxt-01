@@ -16,7 +16,9 @@
     <!-- ▼▼▼ 操作ボタン ▼▼▼ -->
     <div class="field is-grouped mt-6">
       <div class="control">
-        <button class="button is-link" @click="submit">この入力内容で送信</button>
+        <button class="button is-link" @click="submit">
+          この入力内容で送信
+        </button>
       </div>
       <div class="control">
         <button class="button is-link is-light" @click="prev">戻る</button>
@@ -37,13 +39,13 @@ export default {
 
   computed: {
     tableData() {
-      const data = this.$store.getters['step/all'];
+      const data = this.$store.getters['step/all']
       const checkedStartItem = startItems.find((item) => {
         return item.value === data.start
-      });
+      })
       const checkedJobTypes = jobTypes
         .filter((type) => data.jobTypes.includes(type.value))
-        .map((type) => type.label);
+        .map((type) => type.label)
       return [
         {
           label: '名前',
@@ -55,7 +57,7 @@ export default {
         },
         {
           label: '生年月日',
-          value: `${ data.birthYear }年${ data.birthMonth }月${ data.birthDay }日`,
+          value: `${data.birthYear}年${data.birthMonth}月${data.birthDay}日`,
         },
         {
           label: '希望開始時期',

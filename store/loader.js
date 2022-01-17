@@ -5,11 +5,11 @@ export const state = () => ({
 export const mutations = {
   setLoading(state, payload) {
     state.loading = payload
-  }
+  },
 }
 
 export const actions = {
   setLoading({ commit }, payload) {
     commit('setLoading', payload)
-  }
+  },
 }

@@ -10,7 +10,7 @@
 export default {
   computed: {
     loading() {
-      return this.$store.state.loader.loading;
+      return this.$store.state.loader.loading
     },
   },
 }

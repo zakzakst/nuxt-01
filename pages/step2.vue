@@ -28,7 +28,7 @@
     <Textarea
       v-model="formData.remarks"
       label="備考"
-      :placeholder="`${ remarksMaxNum }文字以内`"
+      :placeholder="`${remarksMaxNum}文字以内`"
       :error-message="errorMessages.remarks"
       @input="updateFormData($event, 'remarks')"
     />
@@ -85,7 +85,7 @@ export default {
       startItems,
       jobTypes,
       remarksMaxNum: 20,
-    };
+    }
   },
 
   mounted() {
@@ -115,7 +115,7 @@ export default {
       }
       // 備考入力文字数のチェック
       if (this.formData.remarks.length > this.remarksMaxNum) {
-        this.errorMessages.remarks = `${ this.remarksMaxNum }文字以内で入力してください`
+        this.errorMessages.remarks = `${this.remarksMaxNum}文字以内で入力してください`
         checkResult = false
       }
       // チェック結果を返す
@@ -128,7 +128,7 @@ export default {
     clearForm() {
       for (const [key] of Object.entries(this.formData)) {
         if (key === 'jobTypes') {
-          this.formData[key] = [];
+          this.formData[key] = []
         } else {
           this.formData[key] = ''
         }
