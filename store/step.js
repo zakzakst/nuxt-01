@@ -70,4 +70,10 @@ export const getters = {
   step2(state) {
     return JSON.parse(JSON.stringify(state.step2))
   },
+  all(state) {
+    return {
+      ...JSON.parse(JSON.stringify(state.step1)),
+      ...JSON.parse(JSON.stringify(state.step2)),
+    }
+  }
 }
