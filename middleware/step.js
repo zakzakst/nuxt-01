@@ -6,6 +6,7 @@ export default ({ from, route, redirect }) => {
     (from?.name === 'step2' && route.name === 'step1') ||
     (from?.name === 'step2' && route.name === 'step3') ||
     (from?.name === 'step3' && route.name === 'step2')
-  ) return;
-  redirect('/step1');
+  )
+    return
+  redirect('/step1')
 }

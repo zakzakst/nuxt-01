@@ -1,7 +1,9 @@
 <template>
   <div class="l-step__container">
     <StepNav />
-    <nuxt />
+    <div class="container is-max-desktop">
+      <nuxt />
+    </div>
   </div>
 </template>
 

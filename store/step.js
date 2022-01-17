@@ -2,32 +2,37 @@ export const state = () => ({
   step1: {
     name: '',
     address: '',
+    birthYear: '',
+    birthMonth: '',
+    birthDay: '',
   },
-});
+})
 
 export const mutations = {
   updateStep1(state, payload) {
-    state.step1 = payload;
+    state.step1 = {
+      ...state.step1,
+      ...payload,
+    }
   },
   clearStep1(state) {
-    state.step1 = {
-      name: '',
-      address: '',
-    };
+    for (const [key] of Object.entries(state.step1)) {
+      state.step1[key] = ''
+    }
   },
 }
 
 export const actions = {
   updateStep1({ commit }, payload) {
-    commit('updateStep1', payload);
+    commit('updateStep1', payload)
   },
   clearStep1({ commit }) {
-    commit('clearStep1');
+    commit('clearStep1')
   },
 }
 
 export const getters = {
   step1(state) {
-    return JSON.parse(JSON.stringify(state.step1));
+    return JSON.parse(JSON.stringify(state.step1))
   },
 }
