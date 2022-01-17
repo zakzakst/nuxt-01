@@ -2,7 +2,9 @@
   <div class="l-step__container">
     <StepNav />
     <div class="container is-max-desktop">
-      <nuxt />
+      <section class="section">
+        <nuxt />
+      </section>
     </div>
   </div>
 </template>
@@ -17,7 +19,7 @@ export default {
     StepNav,
   },
 
-  middleware: 'step',
+  // middleware: 'step',
 }
 </script>
 
