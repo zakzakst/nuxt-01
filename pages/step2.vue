@@ -151,7 +151,7 @@ export default {
       }
       // データをstateに反映してからページ遷移
       this.$store.dispatch('step/updateStep2', this.formData)
-      this.$router.push('step3')
+      this.$router.push('/step3')
     },
 
     /**
@@ -160,7 +160,7 @@ export default {
     prev() {
       // データをstateに反映してからページ遷移
       this.$store.dispatch('step/updateStep2', this.formData)
-      this.$router.push('step1')
+      this.$router.push('/step1')
     },
   },
 }
