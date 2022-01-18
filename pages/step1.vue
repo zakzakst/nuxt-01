@@ -174,7 +174,7 @@ export default {
       }
       // データをstateに反映してからページ遷移
       this.$store.dispatch('step/updateStep1', this.formData)
-      this.$router.push('step2')
+      this.$router.push('/step2')
     },
   },
 }

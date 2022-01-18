@@ -100,7 +100,7 @@ export default {
      * 前のページへ移動
      */
     prev() {
-      this.$router.push('step2')
+      this.$router.push('/step2')
     },
   },
 }
