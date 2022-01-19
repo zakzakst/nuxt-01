@@ -1,9 +1,12 @@
 <template>
-  <div>IndexPage<router-link to="/step1">step1</router-link></div>
+  <ul>
+    <li><router-link to="/step1">step1</router-link></li>
+    <li><router-link to="/diagnose">diagnose</router-link></li>
+  </ul>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'Index',
 }
 </script>
