@@ -1,5 +1,9 @@
 <template>
-  <nuxt />
+  <div class="container is-max-desktop">
+    <section class="section">
+      <nuxt />
+    </section>
+  </div>
 </template>
 
 <script>
