@@ -1,17 +1,25 @@
 <template>
   <div>
-    <h1 class="title">診断</h1>
+    <h1 class="title">質問{{ currentNum + 1 }}</h1>
     <div v-if="content">
       <p>{{ content.question }}</p>
-      <ul>
+      <ul class="columns is-multiline mt-4">
         <li
           v-for="(answer, index) in content.answers"
           :key="index"
-          @click="test(answer.point)"
+          class="column is-half"
         >
-          {{ answer.label }}
+          <button
+            class="button is-link is-medium is-fullwidth"
+            @click="next(index)"
+          >
+            {{ answer.label }}
+          </button>
         </li>
       </ul>
+      <div v-if="currentNum > 0">
+        <button class="button is-small is-fullwidth" @click="prev">戻る</button>
+      </div>
     </div>
   </div>
 </template>
@@ -23,6 +31,7 @@ export default {
   data() {
     return {
       currentNum: 0,
+      result: [],
     }
   },
 
@@ -40,8 +49,21 @@ export default {
   },
 
   methods: {
-    test(point) {
-      console.log(point)
+    next(index) {
+      const { pointA, pointB, pointC } = this.content.answers[index]
+      this.result[this.currentNum] = { pointA, pointB, pointC }
+      if (this.currentNum + 1 < this.$store.state.diagnose.contents.length) {
+        this.currentNum += 1
+      } else {
+        this.showResult()
+      }
+    },
+    prev() {
+      this.currentNum -= 1
+    },
+    showResult() {
+      this.$store.dispatch('diagnose/setResult', this.result)
+      this.$router.push('/diagnose-result')
     },
   },
 }

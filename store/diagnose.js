@@ -2,11 +2,15 @@ import axios from 'axios'
 
 export const state = () => ({
   contents: null,
+  result: null,
 })
 
 export const mutations = {
   updateContents(state, payload) {
     state.contents = payload
+  },
+  setResult(state, payload) {
+    state.result = payload
   },
 }
 
@@ -18,5 +22,8 @@ export const actions = {
     } catch (error) {
       console.log(error)
     }
+  },
+  setResult({ commit }, payload) {
+    commit('setResult', payload)
   },
 }

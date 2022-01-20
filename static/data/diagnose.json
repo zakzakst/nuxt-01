@@ -1,14 +1,152 @@
 [
   {
-    "question": "質問1",
+    "question": "運動習慣はどの程度ありますか？",
     "answers": [
       {
-        "label": "回答1-1",
-        "point": 1
+        "label": "週1日以下",
+        "pointA": 1,
+        "pointB": 4,
+        "pointC": 5
       },
       {
-        "label": "回答1-2",
-        "point": 2
+        "label": "週2～4日",
+        "pointA": 2,
+        "pointB": 1,
+        "pointC": 3
+      },
+      {
+        "label": "週5日以上",
+        "pointA": 2,
+        "pointB": 1,
+        "pointC": 3
+      }
+    ]
+  },
+  {
+    "question": "どの程度の頻度で朝食を食べますか？",
+    "answers": [
+      {
+        "label": "朝食は食べない",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "ほとんど食べない",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "週2,3回食べる",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "毎日食べる",
+        "pointA": 1,
+        "pointB": 4,
+        "pointC": 5
+      }
+    ]
+  },
+  {
+    "question": "年齢を教えてください",
+    "answers": [
+      {
+        "label": "～10代",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "20代",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "30代",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "40代",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "50代",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "60代～",
+        "pointA": 1,
+        "pointB": 4,
+        "pointC": 5
+      }
+    ]
+  },
+  {
+    "question": "毎日の睡眠時間はどのくらいですか？",
+    "answers": [
+      {
+        "label": "4時間未満",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "4～6時間",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "6～8時間",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "8時間～",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      }
+    ]
+  },
+  {
+    "question": "起床時間は何時頃ですか？",
+    "answers": [
+      {
+        "label": "6:00前",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "6:00～9:00",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "9:00～12:00",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
+      },
+      {
+        "label": "12:00以降",
+        "pointA": 4,
+        "pointB": 4,
+        "pointC": 1
       }
     ]
   }
