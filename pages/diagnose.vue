@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       currentNum: 0,
-      result: [],
+      results: [],
     }
   },
 
@@ -51,7 +51,7 @@ export default {
   methods: {
     next(index) {
       const { pointA, pointB, pointC } = this.content.answers[index]
-      this.result[this.currentNum] = { pointA, pointB, pointC }
+      this.results[this.currentNum] = { pointA, pointB, pointC }
       if (this.currentNum + 1 < this.$store.state.diagnose.contents.length) {
         this.currentNum += 1
       } else {
@@ -62,7 +62,7 @@ export default {
       this.currentNum -= 1
     },
     showResult() {
-      this.$store.dispatch('diagnose/setResult', this.result)
+      this.$store.dispatch('diagnose/setResults', this.results)
       this.$router.push('/diagnose-result')
     },
   },
