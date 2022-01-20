@@ -2,15 +2,15 @@ import axios from 'axios'
 
 export const state = () => ({
   contents: null,
-  result: null,
+  results: null,
 })
 
 export const mutations = {
   updateContents(state, payload) {
     state.contents = payload
   },
-  setResult(state, payload) {
-    state.result = payload
+  setResults(state, payload) {
+    state.results = payload
   },
 }
 
@@ -23,7 +23,23 @@ export const actions = {
       console.log(error)
     }
   },
-  setResult({ commit }, payload) {
-    commit('setResult', payload)
+  setResults({ commit }, payload) {
+    commit('setResults', payload)
+  },
+}
+
+export const getters = {
+  resultSum(state) {
+    const sum = {
+      pointASum: 0,
+      pointBSum: 0,
+      pointCSum: 0,
+    }
+    state.results.forEach((result) => {
+      sum.pointASum += result.pointA
+      sum.pointBSum += result.pointB
+      sum.pointCSum += result.pointC
+    })
+    return sum
   },
 }
