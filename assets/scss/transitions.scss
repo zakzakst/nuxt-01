@@ -34,6 +34,17 @@ $fade_duration: 0.5s;
   transform: translateX(-$slide_offset);
 }
 
+// 上スライド
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all $slide_duration;
+}
+.slide-up-enter,
+.slide-up-leave-active {
+  opacity: 0;
+  transform: translateY($slide_offset);
+}
+
 // フェード
 .fade-enter-active,
 .fade-leave-active {
