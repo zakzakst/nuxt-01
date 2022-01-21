@@ -30,6 +30,9 @@ export const actions = {
 
 export const getters = {
   resultSum(state) {
+    if (!state.results) {
+      return null
+    }
     const sum = {
       pointASum: 0,
       pointBSum: 0,
