@@ -29,7 +29,7 @@
     <!-- 結果メッセージ表示 -->
     <transition name="slide-up">
       <div
-        v-show="messageTitle && messageText"
+        v-show="isMessageShow"
         class="diagnose__message box content"
       >
         <h2 class="is-size-4">{{ messageTitle }}</h2>
@@ -95,17 +95,33 @@ export default {
       },
       messageTitle: '',
       messageText: '',
+      isMessageShow: false,
     }
   },
 
-  mounted() {
-    this.countUp()
+  async mounted() {
+    // 診断結果を取得
+    const resultSum = this.$store.getters['diagnose/resultSum']
+    if (!resultSum) return
+    // 総合点を取得
+    let resultSumTotal = 0
+    for (const [key] of Object.entries(resultSum)) {
+      resultSumTotal += resultSum[key]
+    }
+    // ローダーを表示してから対応メッセージを取得
+    this.$store.dispatch('loader/setLoading', true)
+    const message = await this.$store.dispatch('diagnose/getMessage', resultSumTotal)
+    this.messageTitle = message.title
+    this.messageText = message.text
+    // ローダーを非表示にしてカウントアップ（ローダー表示確認のため処理を送らせている）
+    setTimeout(() => {
+      this.$store.dispatch('loader/setLoading', false)
+      this.countUp(resultSum)
+    }, 1000);
   },
 
   methods: {
-    countUp() {
-      const resultSum = this.$store.getters['diagnose/resultSum']
-      if (!resultSum) return
+    countUp(resultSum) {
       gsap.to(this.$data, {
         duration: 2,
         pointA: resultSum.pointASum,
@@ -115,7 +131,7 @@ export default {
         onComplete: () => {
           // カウントアップが完了したらグラフとメッセージ表示
           this.showGraph()
-          this.showText()
+          this.isMessageShow = true;
         },
       })
     },
@@ -125,11 +141,6 @@ export default {
       }
       newData.datasets[0].data = [this.pointA, this.pointB, this.pointC]
       this.chartData = newData
-    },
-    showText() {
-      // TODO: 結果メッセージの内容分岐処理
-      this.messageTitle = 'タイトル'
-      this.messageText = '内容'
     },
   },
 }
