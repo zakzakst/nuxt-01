@@ -1,8 +1,11 @@
 <template>
-  <div class="container is-max-desktop">
-    <section class="section">
-      <nuxt />
-    </section>
+  <div>
+    <div class="container is-max-desktop">
+      <section class="section">
+        <nuxt />
+      </section>
+    </div>
+    <Loader />
   </div>
 </template>
 

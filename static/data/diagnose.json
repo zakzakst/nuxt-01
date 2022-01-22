@@ -5,20 +5,20 @@
       {
         "label": "週1日以下",
         "pointA": 1,
-        "pointB": 4,
-        "pointC": 5
+        "pointB": 2,
+        "pointC": 2
       },
       {
         "label": "週2～4日",
-        "pointA": 2,
-        "pointB": 1,
+        "pointA": 4,
+        "pointB": 3,
         "pointC": 3
       },
       {
         "label": "週5日以上",
-        "pointA": 2,
-        "pointB": 1,
-        "pointC": 3
+        "pointA": 5,
+        "pointB": 5,
+        "pointC": 5
       }
     ]
   },
@@ -27,26 +27,26 @@
     "answers": [
       {
         "label": "朝食は食べない",
-        "pointA": 4,
-        "pointB": 4,
+        "pointA": 2,
+        "pointB": 1,
         "pointC": 1
       },
       {
         "label": "ほとんど食べない",
-        "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointA": 3,
+        "pointB": 2,
+        "pointC": 3
       },
       {
         "label": "週2,3回食べる",
         "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointB": 3,
+        "pointC": 4
       },
       {
         "label": "毎日食べる",
-        "pointA": 1,
-        "pointB": 4,
+        "pointA": 5,
+        "pointB": 5,
         "pointC": 5
       }
     ]
@@ -56,39 +56,39 @@
     "answers": [
       {
         "label": "～10代",
-        "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointA": 5,
+        "pointB": 5,
+        "pointC": 5
       },
       {
         "label": "20代",
-        "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointA": 5,
+        "pointB": 5,
+        "pointC": 5
       },
       {
         "label": "30代",
         "pointA": 4,
         "pointB": 4,
-        "pointC": 1
+        "pointC": 4
       },
       {
         "label": "40代",
         "pointA": 4,
         "pointB": 4,
-        "pointC": 1
+        "pointC": 4
       },
       {
         "label": "50代",
-        "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointA": 3,
+        "pointB": 3,
+        "pointC": 3
       },
       {
         "label": "60代～",
-        "pointA": 1,
-        "pointB": 4,
-        "pointC": 5
+        "pointA": 2,
+        "pointB": 2,
+        "pointC": 2
       }
     ]
   },
@@ -97,27 +97,27 @@
     "answers": [
       {
         "label": "4時間未満",
-        "pointA": 4,
-        "pointB": 4,
+        "pointA": 1,
+        "pointB": 2,
         "pointC": 1
       },
       {
         "label": "4～6時間",
-        "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointA": 2,
+        "pointB": 3,
+        "pointC": 3
       },
       {
         "label": "6～8時間",
-        "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointA": 5,
+        "pointB": 5,
+        "pointC": 5
       },
       {
         "label": "8時間～",
         "pointA": 4,
         "pointB": 4,
-        "pointC": 1
+        "pointC": 5
       }
     ]
   },
@@ -128,25 +128,25 @@
         "label": "6:00前",
         "pointA": 4,
         "pointB": 4,
-        "pointC": 1
+        "pointC": 5
       },
       {
         "label": "6:00～9:00",
-        "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointA": 5,
+        "pointB": 5,
+        "pointC": 5
       },
       {
         "label": "9:00～12:00",
-        "pointA": 4,
+        "pointA": 3,
         "pointB": 4,
-        "pointC": 1
+        "pointC": 4
       },
       {
         "label": "12:00以降",
-        "pointA": 4,
-        "pointB": 4,
-        "pointC": 1
+        "pointA": 2,
+        "pointB": 3,
+        "pointC": 3
       }
     ]
   }
