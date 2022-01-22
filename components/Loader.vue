@@ -8,6 +8,8 @@
 
 <script>
 export default {
+  name: 'Loader',
+
   computed: {
     loading() {
       return this.$store.state.loader.loading
