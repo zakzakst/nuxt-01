@@ -53,9 +53,9 @@ export default {
       type: Number,
       default: 10,
     },
-    start: {
+    currentNum: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     centered: {
       type: Boolean,
@@ -69,9 +69,6 @@ export default {
     navTotal() {
       return Math.ceil(this.total / this.perPage);
     },
-    currentNum() {
-      return Math.floor(this.start / this.perPage) + 1;
-    },
     navClass() {
       return {
         'is-centered': this.centered,
@@ -82,13 +79,13 @@ export default {
 
   methods: {
     onClickNav(num) {
-      console.log(num)
+      this.$emit('onClickNav', num);
     },
     onClickNavPrev() {
-      console.log('prev')
+      this.$emit('onClickNavPrev');
     },
     onClickNavNext() {
-      console.log('next')
+      this.$emit('onClickNavNext');
     },
   },
 }
