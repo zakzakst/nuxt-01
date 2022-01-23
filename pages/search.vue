@@ -2,7 +2,7 @@
   <div>
     <h1 class="title">検索</h1>
     <Pagination
-      :total="105"
+      :total="205"
       :per-page="20"
       :current-num="currentNum"
       centered

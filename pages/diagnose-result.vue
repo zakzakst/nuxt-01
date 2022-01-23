@@ -28,10 +28,7 @@
     </div>
     <!-- 結果メッセージ表示 -->
     <transition name="slide-up">
-      <div
-        v-show="isMessageShow"
-        class="diagnose__message box content"
-      >
+      <div v-show="isMessageShow" class="diagnose__message box content">
         <h2 class="is-size-4">{{ messageTitle }}</h2>
         <p>{{ messageText }}</p>
       </div>
@@ -110,14 +107,17 @@ export default {
     }
     // ローダーを表示してから対応メッセージを取得
     this.$store.dispatch('loader/setLoading', true)
-    const message = await this.$store.dispatch('diagnose/getMessage', resultSumTotal)
+    const message = await this.$store.dispatch(
+      'diagnose/getMessage',
+      resultSumTotal
+    )
     this.messageTitle = message.title
     this.messageText = message.text
     // ローダーを非表示にしてカウントアップ（ローダー表示確認のため処理を送らせている）
     setTimeout(() => {
       this.$store.dispatch('loader/setLoading', false)
       this.countUp(resultSum)
-    }, 1000);
+    }, 1000)
   },
 
   methods: {
@@ -131,7 +131,7 @@ export default {
         onComplete: () => {
           // カウントアップが完了したらグラフとメッセージ表示
           this.showGraph()
-          this.isMessageShow = true;
+          this.isMessageShow = true
         },
       })
     },

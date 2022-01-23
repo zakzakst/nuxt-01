@@ -51,7 +51,7 @@ export const actions = {
     } catch (error) {
       return error
     }
-  }
+  },
 }
 
 export const getters = {
