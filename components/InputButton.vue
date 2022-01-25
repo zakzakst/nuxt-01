@@ -2,6 +2,7 @@
   <div class="field has-addons">
     <div class="control">
       <input
+        v-model="inputValue"
         class="input"
         type="text"
         :placeholder="placeholder"
@@ -25,6 +26,10 @@ export default {
   name: 'InputButton',
 
   props: {
+    value: {
+      type: String,
+      required: true,
+    },
     placeholder: {
       type: String,
       default: '',
@@ -47,6 +52,14 @@ export default {
   },
 
   computed: {
+    inputValue: {
+      get() {
+        return this.value
+      },
+      set(value) {
+        this.$emit('input', value)
+      },
+    },
     buttonClass() {
       const result = {
         'is-light': this.buttonLight,
@@ -60,11 +73,11 @@ export default {
 
   methods: {
     onClickButton() {
-      console.log('onClickButton')
+      this.$emit('onClickButton')
     },
     onKeyPress(event) {
       if (event.key === 'Enter') {
-        console.log('onKeyPressEnter')
+        this.$emit('onKeyPressEnter')
       }
     },
   },
