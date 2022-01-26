@@ -22,26 +22,28 @@
 
     <!-- ▼▼▼ 職種フィルター ▼▼▼ -->
     <Checkboxes
-      :values="jobFilter"
+      :values="jobFilters"
       name="jobTypes"
       label="職種"
       :items="jobTypes"
-      @change="updateJobFilter($event)"
+      @change="updateJobFilters($event)"
     />
     <!-- ▲▲▲ 職種フィルター ▲▲▲ -->
 
     <!-- ▼▼▼ 検索結果 ▼▼▼ -->
-    <Cards :items="cardItems" />
-    <Pagination
-      :total="205"
-      :per-page="20"
-      :current-num="currentNum"
-      centered
-      rounded
-      @onClickNav="onClickNav"
-      @onClickNavPrev="onClickNavPrev"
-      @onClickNavNext="onClickNavNext"
-    />
+    <div v-if="cardItems.length">
+      <Cards :items="cardItems" />
+      <Pagination
+        :total="205"
+        :per-page="20"
+        :current-num="currentNum"
+        centered
+        rounded
+        @onClickNav="onClickNav"
+        @onClickNavPrev="onClickNavPrev"
+        @onClickNavNext="onClickNavNext"
+      />
+    </div>
     <!-- ▲▲▲ 検索結果 ▲▲▲ -->
   </div>
 </template>
@@ -72,40 +74,14 @@ export default {
       tagIndex: 1,
       currentNum: 1,
       jobTypes,
-      jobFilter: [],
-      cardItems: [
-        {
-          id: 'test1',
-          link: '#',
-          title: 'テスト1',
-          img: '',
-        },
-        {
-          id: 'test2',
-          link: '#',
-          title: 'テスト2',
-          img: 'https://picsum.photos/id/237/300/300',
-        },
-        {
-          id: 'test3',
-          link: '#',
-          title: 'テスト3',
-          img: 'https://picsum.photos/id/238/300/300',
-        },
-        {
-          id: 'test4',
-          link: '#',
-          title: 'テスト4',
-          img: 'https://picsum.photos/id/239/300/300',
-        },
-        {
-          id: 'test5',
-          link: '#',
-          title: 'テスト5',
-          img: 'https://picsum.photos/id/240/300/300',
-        },
-      ],
+      jobFilters: [],
     }
+  },
+
+  computed: {
+    cardItems() {
+      return this.$store.getters['search/filteredItems'](this.jobFilters)
+    },
   },
 
   methods: {
@@ -118,8 +94,8 @@ export default {
     onClickNavNext() {
       this.currentNum += 1
     },
-    updateJobFilter(event) {
-      console.log(event)
+    updateJobFilters(event) {
+      this.jobFilters = event
     },
     onClickDelete(id) {
       const target = this.tags.find((tag) => {
@@ -127,16 +103,19 @@ export default {
       })
       const tagIndex = this.tags.indexOf(target)
       this.tags.splice(tagIndex, 1)
+      this.getCardItems()
     },
     onClickButton() {
       if (!this.keyword) return
       this.addKeyWords(this.keyword)
       this.keyword = ''
+      this.getCardItems()
     },
     onKeyPressEnter() {
       if (!this.keyword) return
       this.addKeyWords(this.keyword)
       this.keyword = ''
+      this.getCardItems()
     },
     addKeyWords(keyword) {
       this.tags.push({
@@ -144,6 +123,9 @@ export default {
         label: keyword,
       })
       this.tagIndex += 1
+    },
+    getCardItems() {
+      this.$store.dispatch('search/setItems', this.tags)
     },
   },
 }
