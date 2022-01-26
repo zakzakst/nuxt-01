@@ -2,38 +2,40 @@
   <div>
     <h1 class="title">検索</h1>
 
-    <!-- ▼▼▼ キーワード ▼▼▼ -->
-    <InputButton
-      v-model="keyword"
-      button-text="追加"
-      placeholder="キーワード"
-      button-color="link"
-      @onClickButton="onClickButton"
-      @onKeyPressEnter="onKeyPressEnter"
-    />
-    <Tags
-      :tags="tags"
-      rounded
-      light
-      color="link"
-      @onClickDelete="onClickDelete"
-    />
-    <!-- ▲▲▲ キーワード ▲▲▲ -->
+    <div class="box">
+      <!-- ▼▼▼ キーワード ▼▼▼ -->
+      <InputButton
+        v-model="keyword"
+        button-text="追加"
+        placeholder="キーワード"
+        button-color="link"
+        @onClickButton="onClickButton"
+        @onKeyPressEnter="onKeyPressEnter"
+      />
+      <Tags
+        :tags="tags"
+        rounded
+        light
+        color="link"
+        @onClickDelete="onClickDelete"
+      />
+      <!-- ▲▲▲ キーワード ▲▲▲ -->
 
-    <!-- ▼▼▼ 職種フィルター ▼▼▼ -->
-    <Checkboxes
-      :values="jobFilters"
-      name="jobTypes"
-      label="職種"
-      :items="jobTypes"
-      @change="updateJobFilters($event)"
-    />
-    <!-- ▲▲▲ 職種フィルター ▲▲▲ -->
+      <!-- ▼▼▼ 職種フィルター ▼▼▼ -->
+      <Checkboxes
+        :values="jobFilters"
+        name="jobTypes"
+        label="職種"
+        :items="jobTypes"
+        @change="updateJobFilters($event)"
+      />
+      <!-- ▲▲▲ 職種フィルター ▲▲▲ -->
+    </div>
 
     <!-- ▼▼▼ 検索結果 ▼▼▼ -->
     <div v-if="cardItems.length">
       <Cards :items="cardItems" />
-      <Pagination
+      <!-- <Pagination
         :total="205"
         :per-page="20"
         :current-num="currentNum"
@@ -42,7 +44,7 @@
         @onClickNav="onClickNav"
         @onClickNavPrev="onClickNavPrev"
         @onClickNavNext="onClickNavNext"
-      />
+      /> -->
     </div>
     <!-- ▲▲▲ 検索結果 ▲▲▲ -->
   </div>
@@ -52,7 +54,7 @@
 import Cards from '@/components/Cards.vue'
 import Checkboxes from '@/components/Checkboxes.vue'
 import InputButton from '@/components/InputButton.vue'
-import Pagination from '@/components/Pagination.vue'
+// import Pagination from '@/components/Pagination.vue'
 import Tags from '@/components/Tags.vue'
 import { jobTypes } from '@/constants/formItems'
 
@@ -63,7 +65,7 @@ export default {
     Cards,
     Checkboxes,
     InputButton,
-    Pagination,
+    // Pagination,
     Tags,
   },
 
@@ -124,8 +126,12 @@ export default {
       })
       this.tagIndex += 1
     },
-    getCardItems() {
-      this.$store.dispatch('search/setItems', this.tags)
+    async getCardItems() {
+      this.$store.dispatch('loader/setLoading', true)
+      await this.$store.dispatch('search/setItems', this.tags)
+      setTimeout(() => {
+        this.$store.dispatch('loader/setLoading', false)
+      }, 500)
     },
   },
 }

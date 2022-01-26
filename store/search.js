@@ -6,7 +6,7 @@ export const state = () => ({
 
 export const mutations = {
   setItems(state, items) {
-    state.items = items;
+    state.items = items
   },
 }
 
@@ -24,6 +24,7 @@ export const actions = {
         return flg
       })
       commit('setItems', filteredData)
+      return 'success'
     } catch (error) {
       console.log(error)
     }
@@ -47,5 +48,5 @@ export const getters = {
       // フィルターがない場合、全体を返す
       return state.items
     }
-  }
+  },
 }
