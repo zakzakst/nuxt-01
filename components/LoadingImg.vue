@@ -1,6 +1,8 @@
 <template>
   <div class="loading-img" :class="{ 'is-loading': isLoading }">
-    <p v-if="isError" class="loading-img__error is-size-7">画像取得に失敗しました</p>
+    <p v-if="isError" class="loading-img__error is-size-7">
+      画像取得に失敗しました
+    </p>
     <img
       v-else
       :src="src"
@@ -8,7 +10,7 @@
       class="loading-img__img"
       @load="onLoad"
       @error="onError"
-    >
+    />
   </div>
 </template>
 
@@ -24,7 +26,7 @@ export default {
     alt: {
       type: String,
       default: '',
-    }
+    },
   },
 
   data() {
@@ -61,8 +63,9 @@ export default {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity 2s;
     @at-root .loading-img.is-loading & {
-      display: none;
+      opacity: 0;
     }
   }
 
