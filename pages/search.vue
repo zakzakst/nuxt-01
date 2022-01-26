@@ -30,6 +30,8 @@
     />
     <!-- ▲▲▲ 職種フィルター ▲▲▲ -->
 
+    <!-- ▼▼▼ 検索結果 ▼▼▼ -->
+    <Cards />
     <Pagination
       :total="205"
       :per-page="20"
@@ -40,24 +42,27 @@
       @onClickNavPrev="onClickNavPrev"
       @onClickNavNext="onClickNavNext"
     />
+    <!-- ▲▲▲ 検索結果 ▲▲▲ -->
   </div>
 </template>
 
 <script>
+import Cards from '@/components/Cards.vue'
 import Checkboxes from '@/components/Checkboxes.vue'
+import InputButton from '@/components/InputButton.vue'
 import Pagination from '@/components/Pagination.vue'
 import Tags from '@/components/Tags.vue'
-import InputButton from '@/components/InputButton.vue'
 import { jobTypes } from '@/constants/formItems'
 
 export default {
   name: 'Search',
 
   components: {
+    Cards,
     Checkboxes,
+    InputButton,
     Pagination,
     Tags,
-    InputButton,
   },
 
   data() {
