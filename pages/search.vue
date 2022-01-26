@@ -31,7 +31,7 @@
     <!-- ▲▲▲ 職種フィルター ▲▲▲ -->
 
     <!-- ▼▼▼ 検索結果 ▼▼▼ -->
-    <Cards />
+    <Cards :items="cardItems" />
     <Pagination
       :total="205"
       :per-page="20"
@@ -73,6 +73,38 @@ export default {
       currentNum: 1,
       jobTypes,
       jobFilter: [],
+      cardItems: [
+        {
+          id: 'test1',
+          link: '#',
+          title: 'テスト1',
+          img: '',
+        },
+        {
+          id: 'test2',
+          link: '#',
+          title: 'テスト2',
+          img: 'https://picsum.photos/id/237/300/300',
+        },
+        {
+          id: 'test3',
+          link: '#',
+          title: 'テスト3',
+          img: 'https://picsum.photos/id/238/300/300',
+        },
+        {
+          id: 'test4',
+          link: '#',
+          title: 'テスト4',
+          img: 'https://picsum.photos/id/239/300/300',
+        },
+        {
+          id: 'test5',
+          link: '#',
+          title: 'テスト5',
+          img: 'https://picsum.photos/id/240/300/300',
+        },
+      ],
     }
   },
 

@@ -26,41 +26,11 @@ export default {
     LoadingImg,
   },
 
-  data() {
-    return {
-      items: [
-        {
-          id: 'test1',
-          link: '#',
-          title: 'テスト1',
-          img: 'https://bulma.io/images/placeholders/1280x9601.png',
-        },
-        {
-          id: 'test2',
-          link: '#',
-          title: 'テスト2',
-          img: 'https://picsum.photos/id/237/300/300',
-        },
-        {
-          id: 'test3',
-          link: '#',
-          title: 'テスト3',
-          img: 'https://picsum.photos/id/238/300/300',
-        },
-        {
-          id: 'test4',
-          link: '#',
-          title: 'テスト4',
-          img: 'https://picsum.photos/id/239/300/300',
-        },
-        {
-          id: 'test5',
-          link: '#',
-          title: 'テスト5',
-          img: 'https://picsum.photos/id/240/300/300',
-        },
-      ],
-    }
+  props: {
+    items: {
+      type: Array,
+      required: true,
+    },
   },
 }
 </script>

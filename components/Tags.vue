@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { COLORS } from '@/constants/colors';
+import { COLORS } from '@/constants/colors'
 
 export default {
   name: 'Tags',
@@ -28,7 +28,7 @@ export default {
     },
     color: {
       type: String,
-      validator (val) {
+      validator(val) {
         return ['', ...COLORS].includes(val)
       },
       default: '',
@@ -42,9 +42,9 @@ export default {
         'is-light': this.light,
       }
       if (this.color) {
-        result[`is-${this.color}`] = true;
+        result[`is-${this.color}`] = true
       }
-      return result;
+      return result
     },
   },
 

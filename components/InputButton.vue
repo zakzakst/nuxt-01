@@ -7,20 +7,18 @@
         type="text"
         :placeholder="placeholder"
         @keypress="onKeyPress($event)"
-      >
+      />
     </div>
     <div class="control">
-      <a
-        class="button"
-        :class="buttonClass"
-        @click="onClickButton"
-      >{{ buttonText }}</a>
+      <a class="button" :class="buttonClass" @click="onClickButton">{{
+        buttonText
+      }}</a>
     </div>
   </div>
 </template>
 
 <script>
-import { COLORS } from '@/constants/colors';
+import { COLORS } from '@/constants/colors'
 
 export default {
   name: 'InputButton',
@@ -44,7 +42,7 @@ export default {
     },
     buttonColor: {
       type: String,
-      validator (val) {
+      validator(val) {
         return ['', ...COLORS].includes(val)
       },
       default: '',
@@ -65,9 +63,9 @@ export default {
         'is-light': this.buttonLight,
       }
       if (this.buttonColor) {
-        result[`is-${this.buttonColor}`] = true;
+        result[`is-${this.buttonColor}`] = true
       }
-      return result;
+      return result
     },
   },
 

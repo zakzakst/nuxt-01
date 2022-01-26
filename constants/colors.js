@@ -5,4 +5,4 @@ export const COLORS = [
   'success',
   'warning',
   'danger',
-];
+]
