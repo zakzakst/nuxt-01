@@ -14,7 +14,7 @@
       <span class="card-setting__content-item">
         投入枚数
         <input
-          v-model="settingValue.cardNum"
+          v-model="cardNum"
           class="card-setting__number"
           type="number"
           min="0"
@@ -26,7 +26,7 @@
       <span class="card-setting__content-item">
         希望枚数
         <input
-          v-model="settingValue.wantNum"
+          v-model="wantNum"
           class="card-setting__number"
           type="number"
           min="0"
@@ -37,13 +37,13 @@
       <span class="card-setting__divider">／</span>
       <span class="card-setting__content-item">
         条件
-        <select v-model="settingValue.term" class="card-setting__select">
+        <select v-model="term" class="card-setting__select">
           <option
-            v-for="(term, index) in terms"
+            v-for="(option, index) in termOptions"
             :key="index"
-            :value="term.value"
+            :value="option.value"
           >
-            {{ term.label }}
+            {{ option.label }}
           </option>
         </select>
       </span>
@@ -72,7 +72,7 @@ export default {
 
   data() {
     return {
-      terms: [
+      termOptions: [
         {
           value: 'more',
           label: '希望枚数以上ドロー',
@@ -86,17 +86,29 @@ export default {
   },
 
   computed: {
-    settingValue() {
-      return this.setting
-    },
-  },
-
-  watch: {
-    settingValue: {
-      handler(value) {
-        this.$emit('change', value)
+    cardNum: {
+      get() {
+        return this.setting.cardNum
       },
-      deep: true,
+      set(val) {
+        this.$emit('change', { prop: 'cardNum', value: Number(val) })
+      },
+    },
+    wantNum: {
+      get() {
+        return this.setting.wantNum
+      },
+      set(val) {
+        this.$emit('change', { prop: 'wantNum', value: Number(val) })
+      },
+    },
+    term: {
+      get() {
+        return this.setting.term
+      },
+      set(val) {
+        this.$emit('change', { prop: 'term', value: val })
+      },
     },
   },
 
@@ -118,6 +130,7 @@ export default {
   &__head {
     display: flex;
     align-items: center;
+    height: 30px;
   }
   &__head-delete {
     flex-shrink: 0;

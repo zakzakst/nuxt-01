@@ -116,8 +116,15 @@ export default {
   },
 
   mounted() {
-    // ゲーム設定初期化
-    this.getGameSettings()
+    const params = this.getParams()
+    if (params) {
+      // URLにパラメータが設定されている場合、その値を反映
+      this.gameSettings = params.gameSettings
+      this.cardSettings = params.cardSettings
+    } else {
+      // URLにパラメータが設定されていない場合、ストレージのゲーム設定を反映
+      this.getGameSettings()
+    }
     // カード設定初期化
     const cardSetting = JSON.parse(JSON.stringify(this.initialCardSetting))
     this.cardSettings.push(cardSetting)
@@ -125,15 +132,17 @@ export default {
 
   methods: {
     updateGameSettings(event, prop) {
-      console.log(event, prop)
+      // ゲーム設定の更新
       this.gameSettings[prop] = event
     },
     addCardSetting() {
+      // 新規カード設定を追加
       const cardSetting = JSON.parse(JSON.stringify(this.initialCardSetting))
       this.cardSettings.push(cardSetting)
     },
     onChangeCardSetting(event, index) {
-      console.log(event, index)
+      // カード設定の更新
+      this.cardSettings[index][event.prop] = event.value
     },
     deleteCardSetting(index) {
       // 指定した番号のカード設定を削除
@@ -154,16 +163,25 @@ export default {
     onClickButtonTooltip() {
       // 結果URLをクリップボードにコピー後、メッセージを表示
       if (navigator.clipboard) {
-        const base = location.protocol + location.host + location.pathname
-        // TODO: パラメータ文字列の取得（オブジェクトの文字化とエンコード）
-        const params = '?test'
-        navigator.clipboard.writeText(base + params);
+        // const base = location.protocol + location.host + location.pathname
+        const base = location.host + location.pathname
+        const paramsObj = {
+          gameSettings: this.gameSettings,
+          cardSettings: this.cardSettings,
+        }
+        const params = encodeURIComponent(JSON.stringify(paramsObj))
+        navigator.clipboard.writeText(base + '?params=' + params)
         this.resultMessage = 'コピーしました'
       }
     },
     onHideTooltip() {
       // ツールチップ非表示後、メッセージを初期化
       this.resultMessage = ''
+    },
+    getParams() {
+      const params = location.search
+      if (!params) return null
+      return JSON.parse(decodeURIComponent(params.replace('?params=', '')))
     },
   },
 }
