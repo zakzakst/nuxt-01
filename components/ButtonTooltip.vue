@@ -7,7 +7,9 @@
       @click="onClick"
     >
       <transition name="tooltip">
-        <span v-show="isMessageShow" class="button-tooltip__tooltip">{{ message }}</span>
+        <span v-show="isMessageShow" class="button-tooltip__tooltip">{{
+          message
+        }}</span>
       </transition>
       <span>{{ label }}</span>
     </button>
@@ -63,15 +65,15 @@ export default {
       const result = {
         'is-fullwidth': this.fullWidth,
         'is-rounded': this.rounded,
-      };
+      }
       if (this.color) {
         result[`is-${this.color}`] = true
       }
-      return result;
+      return result
     },
     isMessageShow() {
       return Boolean(this.message && this.canMessageShow)
-    }
+    },
   },
 
   watch: {
@@ -79,7 +81,7 @@ export default {
       if (newVal) {
         setTimeout(() => {
           this.messageHide()
-        }, this.messageShowTime);
+        }, this.messageShowTime)
       }
     },
   },
@@ -96,7 +98,7 @@ export default {
       setTimeout(() => {
         this.$emit('messageHideDone')
         this.canClick = true
-      }, 1000);
+      }, 1000)
     },
   },
 }
