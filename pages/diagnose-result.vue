@@ -24,7 +24,7 @@
     </div>
     <!-- グラフ -->
     <div class="diagnose__chart">
-      <diagnose-chart :chart-data="chartData" :options="chartOptions" />
+      <ChartDiagnose :chart-data="chartData" :options="chartOptions" />
     </div>
     <!-- 結果メッセージ表示 -->
     <transition name="slide-up">
@@ -38,13 +38,13 @@
 
 <script>
 import { gsap } from 'gsap'
-import DiagnoseChart from '@/components/DiagnoseChart'
+import ChartDiagnose from '@/components/ChartDiagnose'
 
 export default {
   name: 'DiagnoseResult',
 
   components: {
-    DiagnoseChart,
+    ChartDiagnose,
   },
 
   beforeRouteEnter(to, from, next) {

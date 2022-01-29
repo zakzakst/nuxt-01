@@ -39,6 +39,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    outlined: {
+      type: Boolean,
+      default: false,
+    },
     color: {
       type: String,
       validator(val) {
@@ -65,6 +69,7 @@ export default {
       const result = {
         'is-fullwidth': this.fullWidth,
         'is-rounded': this.rounded,
+        'is-outlined': this.outlined,
       }
       if (this.color) {
         result[`is-${this.color}`] = true
