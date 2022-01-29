@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="pb-6">
     <h2 class="is-size-4">ゲーム設定</h2>
     <div class="box mt-2">
       <div class="columns mb-0">
@@ -51,9 +51,27 @@
           @change="onChangeCardSetting($event, index)"
           @delete="deleteCardSetting(index)"
         />
-        <button class="button is-fullwidth is-light" @click="addCardSetting">
-          追加
-        </button>
+        <div>
+          <button class="button is-fullwidth is-light" @click="addCardSetting">
+            追加
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-control">
+      <div class="container is-max-desktop">
+        <div class="section py-4">
+          <ButtonTooltip
+            :disabled="false"
+            label="結果URLをコピー"
+            :message="resultMessage"
+            full-width
+            rounded
+            color="white"
+            @click="onClickButtonTooltip"
+            @messageHideDone="onHideTooltip"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -63,6 +81,7 @@
 import InputNumber from '@/components/InputNumber'
 import Select from '@/components/Select.vue'
 import CardSetting from '@/components/CardSetting.vue'
+import ButtonTooltip from '@/components/ButtonTooltip.vue'
 
 export default {
   name: 'Calculation',
@@ -71,6 +90,7 @@ export default {
     InputNumber,
     Select,
     CardSetting,
+    ButtonTooltip,
   },
 
   data() {
@@ -91,6 +111,7 @@ export default {
         firstMoveNum: 5,
       },
       cardSettings: [],
+      resultMessage: '',
     }
   },
 
@@ -115,15 +136,46 @@ export default {
       console.log(event, index)
     },
     deleteCardSetting(index) {
+      // 指定した番号のカード設定を削除
       this.cardSettings.splice(index, 1)
     },
     getGameSettings() {
+      // ローカルストレージからゲーム設定を取得
       const gameSettings = localStorage.getItem(this.storageKey)
-      this.gameSettings = JSON.parse(gameSettings)
+      // ゲーム設定がある場合、設定を反映
+      if (gameSettings) {
+        this.gameSettings = JSON.parse(gameSettings)
+      }
     },
     saveGameSettings() {
+      // ローカルストレージにゲーム設定を保存
       localStorage.setItem(this.storageKey, JSON.stringify(this.gameSettings))
+    },
+    onClickButtonTooltip() {
+      // 結果URLをクリップボードにコピー後、メッセージを表示
+      if (navigator.clipboard) {
+        const base = location.protocol + location.host + location.pathname
+        // TODO: パラメータ文字列の取得（オブジェクトの文字化とエンコード）
+        const params = '?test'
+        navigator.clipboard.writeText(base + params);
+        this.resultMessage = 'コピーしました'
+      }
+    },
+    onHideTooltip() {
+      // ツールチップ非表示後、メッセージを初期化
+      this.resultMessage = ''
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.bottom-control {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $c_primary;
+  z-index: $z_nav;
+}
+</style>

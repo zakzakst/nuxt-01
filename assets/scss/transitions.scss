@@ -1,5 +1,6 @@
 $slide_duration: 0.7s;
 $slide_offset: 50px;
+$slide_offset_tooltip: 10px;
 $fade_duration: 0.5s;
 
 // 右スライド
@@ -53,4 +54,15 @@ $fade_duration: 0.5s;
 .fade-enter,
 .fade-leave-active {
   opacity: 0;
+}
+
+// ツールチップ
+.tooltip-enter-active,
+.tooltip-leave-active {
+  transition: all $slide_duration;
+}
+.tooltip-enter,
+.tooltip-leave-active {
+  opacity: 0;
+  transform: translateY($slide_offset_tooltip);
 }

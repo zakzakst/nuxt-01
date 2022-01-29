@@ -75,7 +75,7 @@ export default {
       terms: [
         {
           value: 'more',
-          label: '以上ドロー',
+          label: '希望枚数以上ドロー',
         },
         {
           value: 'test',
