@@ -7,6 +7,9 @@
         class="input"
         :class="{ 'is-danger': errorMessage }"
         type="number"
+        :max="max"
+        :min="min"
+        :step="step"
       />
     </div>
     <p v-if="errorMessage" class="help is-danger">{{ errorMessage }}</p>
@@ -28,6 +31,18 @@ export default {
     },
     errorMessage: {
       type: String,
+      default: null,
+    },
+    max: {
+      type: Number,
+      default: null,
+    },
+    min: {
+      type: Number,
+      default: null,
+    },
+    step: {
+      type: Number,
       default: null,
     },
   },

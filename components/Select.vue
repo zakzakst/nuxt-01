@@ -1,5 +1,5 @@
 <template>
-  <div class="select">
+  <div class="select" :class="selectClass">
     <select v-model="selectedValue">
       <option
         v-for="(option, index) in options"
@@ -25,6 +25,10 @@ export default {
       type: Array,
       required: true,
     },
+    fullWidth: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
@@ -35,6 +39,12 @@ export default {
       set(value) {
         this.$emit('change', value)
       },
+    },
+    selectClass() {
+      const result = {
+        'is-fullwidth': this.fullWidth,
+      }
+      return result
     },
   },
 }
