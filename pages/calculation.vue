@@ -58,19 +58,34 @@
         </div>
       </div>
     </div>
+    <div class="mt-6">
+      <ChartCalculation :chart-data="chartData" :options="chartOptions" />
+    </div>
     <div class="bottom-control">
       <div class="container is-max-desktop">
         <div class="section py-4">
-          <ButtonTooltip
-            :disabled="false"
-            label="結果URLをコピー"
-            :message="resultMessage"
-            full-width
-            rounded
-            color="white"
-            @click="onClickButtonTooltip"
-            @messageHideDone="onHideTooltip"
-          />
+          <div class="columns">
+            <div class="column is-half">
+              <button
+                class="button is-rounded is-white is-fullwidth"
+                @click="chartUpdate"
+              >
+                計算する
+              </button>
+            </div>
+            <div class="column is-half">
+              <ButtonTooltip
+                :disabled="false"
+                label="結果URLをコピー"
+                :message="resultMessage"
+                full-width
+                rounded
+                color="white"
+                @click="onClickButtonTooltip"
+                @messageHideDone="onHideTooltip"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -82,6 +97,7 @@ import InputNumber from '@/components/InputNumber'
 import Select from '@/components/Select.vue'
 import CardSetting from '@/components/CardSetting.vue'
 import ButtonTooltip from '@/components/ButtonTooltip.vue'
+import ChartCalculation from '@/components/ChartCalculation'
 
 export default {
   name: 'Calculation',
@@ -91,6 +107,7 @@ export default {
     Select,
     CardSetting,
     ButtonTooltip,
+    ChartCalculation,
   },
 
   data() {
@@ -112,6 +129,68 @@ export default {
       },
       cardSettings: [],
       resultMessage: '',
+      chartData: {
+        labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
+        datasets: [
+          {
+            label: '確率',
+            backgroundColor: 'rgba(72, 95, 199, 0.5)',
+            borderColor: 'rgba(72, 95, 199, 1)',
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          },
+        ],
+      },
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        // title: {
+        //   display: true,
+        //   text: '各ターンの確率',
+        // },
+        scales: {
+          xAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: 'ドロー枚数',
+                fontSize: 16,
+              },
+            },
+          ],
+          yAxes: [
+            {
+              ticks: {
+                max: 100,
+                min: 0,
+                stepSize: 10,
+                // 末尾に「%」を入れる
+                callback: (value) => {
+                  return value + '%'
+                },
+              },
+              scaleLabel: {
+                display: true,
+                labelString: '確率',
+                fontSize: 16,
+              },
+            },
+          ],
+        },
+        legend: {
+          display: false,
+        },
+        tooltips: {
+          // enabled: false,
+          callbacks: {
+            title(items, data) {
+              return 'ドロー' + items[0].label + '枚目'
+            },
+            label(item) {
+              return '確率' + item.value + '%'
+            },
+          },
+        },
+      },
     }
   },
 
@@ -163,6 +242,7 @@ export default {
     onClickButtonTooltip() {
       // 結果URLをクリップボードにコピー後、メッセージを表示
       if (navigator.clipboard) {
+        // TODO: アップロード時エラー確認
         // const base = location.protocol + location.host + location.pathname
         const base = location.host + location.pathname
         const paramsObj = {
@@ -182,6 +262,12 @@ export default {
       const params = location.search
       if (!params) return null
       return JSON.parse(decodeURIComponent(params.replace('?params=', '')))
+    },
+    chartUpdate() {
+      // TODO: 計算してデータ更新
+      this.chartData.datasets[0].data = [0, 0, 0, 0, 0, 0, 10, 50, 0, 50]
+      // watchを発火させる（※deepを利用したところchart.jsのupdate関数でループが起こってしまったため、このように対応）
+      this.chartData = { ...this.chartData }
     },
   },
 }
