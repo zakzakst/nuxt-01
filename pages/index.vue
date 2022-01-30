@@ -4,6 +4,7 @@
     <li><router-link to="/diagnose">diagnose</router-link></li>
     <li><router-link to="/search">search</router-link></li>
     <li><router-link to="/calculation">calculation</router-link></li>
+    <li><router-link to="/news">news</router-link></li>
   </ul>
 </template>
 
