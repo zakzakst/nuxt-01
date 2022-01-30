@@ -75,7 +75,7 @@
             </div>
             <div class="column is-half">
               <ButtonTooltip
-                :disabled="false"
+                :disabled="buttonTooltipDisable"
                 label="結果URLをコピー"
                 :message="resultMessage"
                 full-width
@@ -129,6 +129,7 @@ export default {
       },
       cardSettings: [],
       resultMessage: '',
+      buttonTooltipDisable: true,
       chartData: {
         labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'],
         datasets: [
@@ -182,7 +183,7 @@ export default {
         tooltips: {
           // enabled: false,
           callbacks: {
-            title(items, data) {
+            title(items) {
               return 'ドロー' + items[0].label + '枚目'
             },
             label(item) {
@@ -242,9 +243,13 @@ export default {
     onClickButtonTooltip() {
       // 結果URLをクリップボードにコピー後、メッセージを表示
       if (navigator.clipboard) {
-        // TODO: アップロード時エラー確認
-        // const base = location.protocol + location.host + location.pathname
-        const base = location.host + location.pathname
+        let base = ''
+        if (location.host.includes('localhost')) {
+          // 検証環境の場合
+          base = location.host + location.pathname
+        } else {
+          base = location.protocol + location.host + location.pathname
+        }
         const paramsObj = {
           gameSettings: this.gameSettings,
           cardSettings: this.cardSettings,
@@ -266,6 +271,8 @@ export default {
     chartUpdate() {
       // TODO: 計算してデータ更新
       this.chartData.datasets[0].data = [0, 0, 0, 0, 0, 0, 10, 50, 0, 50]
+      // 結果URLコピーボタンを有効にする
+      this.buttonTooltipDisable = false
       // watchを発火させる（※deepを利用したところchart.jsのupdate関数でループが起こってしまったため、このように対応）
       this.chartData = { ...this.chartData }
     },

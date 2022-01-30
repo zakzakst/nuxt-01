@@ -60,7 +60,7 @@ export default {
     return {
       canMessageShow: false,
       canClick: true,
-      messageShowTime: 2500,
+      messageShowTime: 2000,
     }
   },
 
