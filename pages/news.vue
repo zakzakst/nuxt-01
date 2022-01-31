@@ -74,7 +74,7 @@ export default {
 
   methods: {
     clickTab(id) {
-      this.activeId = id;
+      this.activeId = id
     },
     async getContent() {
       const { data } = await axios.get('/nuxt/01/data/news.json')
