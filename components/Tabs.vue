@@ -67,10 +67,9 @@ export default {
       const tabsCenter = tabsEl.clientWidth / 2 + tabsX
       const activeCenter = activeEl.clientWidth / 2 + activeX
       // スクロール位置を移動
-      const scrollLeft = tabsEl.scrollLeft + activeCenter - tabsCenter
       gsap.to(tabsEl, {
         duration: 0.5,
-        scrollLeft,
+        scrollLeft: tabsEl.scrollLeft + activeCenter - tabsCenter,
       })
     },
     onClickTab(item) {
