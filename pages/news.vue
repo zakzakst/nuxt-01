@@ -1,10 +1,12 @@
 <template>
   <div>
     <Tabs :items="items" :active-id="activeId" boxed @clickTab="clickTab" />
+    <div v-html="content"></div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import Tabs from '@/components/Tabs.vue'
 
 export default {
@@ -55,16 +57,28 @@ export default {
         },
       ],
       activeId: '',
+      content: '',
     }
+  },
+
+  watch: {
+    activeId() {
+      this.getContent()
+    },
   },
 
   mounted() {
     this.activeId = this.items[0].id
+    this.getContent()
   },
 
   methods: {
     clickTab(id) {
       this.activeId = id;
+    },
+    async getContent() {
+      const { data } = await axios.get('/nuxt/01/data/news.json')
+      this.content = data[this.activeId]
     },
   },
 }

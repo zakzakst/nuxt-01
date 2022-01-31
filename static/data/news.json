@@ -1,0 +1,11 @@
+{
+  "news": "ニュース内容",
+  "economy": "経済内容",
+  "entertainment": "エンタメ内容",
+  "sports": "スポーツ内容",
+  "domestic": "国内内容",
+  "international": "国際内容",
+  "it": "IT内容",
+  "science": "科学内容",
+  "region": "地域内容"
+}
